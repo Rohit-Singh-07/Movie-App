@@ -20,7 +20,6 @@ function NavScrollExample() {
     try{
       const { data } = await axios.get(`/search/multi?query=${searchTerm}`);
       setSearchResult(data.results)
-      console.log(data.results);
     }
     catch(err){
       console.log(err);
@@ -67,8 +66,8 @@ function NavScrollExample() {
                     {elem.media_type === "person" && <p>Department: {elem.known_for_department}</p>}
                     {elem.media_type === "person" && <p>Featured in: {elem.known_for.map((e, i) => <span key={i}>{e.name || e.title || e.original_title}, </span>)}</p>}
                     {(elem.media_type === "movie" || elem.media_type === "tv") && <p>{elem.media_type}</p>}
-                    {elem.media_type === !"person" && <p>lang: {elem.original_language}</p>}
-                    {elem.media_type === !"person" && <span>{elem.media_type === "movie" ? <span>{`release date: ${elem.release_date}`}</span> : <span>{`aired on: ${elem.first_air_date}`}</span>}</span>}
+                    {(elem.media_type === "movie" || elem.media_type === "tv") && <p>lang: {elem.original_language}</p>}
+                    {(elem.media_type === "movie" || elem.media_type === "tv") && <span>{elem.media_type === "movie" ? <span>{`release date: ${elem.release_date}`}</span> : <span>{`aired on: ${elem.first_air_date}`}</span>}</span>}
                     {elem.adult === true && <p>18+</p>}
                   </div>
                 </Link>
