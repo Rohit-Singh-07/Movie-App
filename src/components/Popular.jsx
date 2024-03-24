@@ -12,7 +12,6 @@ const Popular = () => {
     const [page, setPage] = useState(1);
 
     const handleCategoryChange = (e) => {
-        console.log(e.target.value)
         setCategory(e.target.value);
         setPage(1);
     };
@@ -20,17 +19,17 @@ const Popular = () => {
     const getPopularity = async () => {
         try {
             const { data } = await axios.get(`/${category}/popular?page=${page}`);
+            
             setPopularity((prevPopularity) => [...prevPopularity, ...data.results]);
             setPage((prevPage) => prevPage + 1);
         } catch (err) {
             console.log(err);
         }
     };
-    
 
     useEffect(() => {
         getPopularity();
-    }, [category]);
+    }, [category, page]);
 
     return (
         <>
@@ -83,3 +82,4 @@ const Popular = () => {
 }
 
 export default Popular;
+

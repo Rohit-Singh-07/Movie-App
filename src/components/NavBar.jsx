@@ -40,7 +40,7 @@ function NavScrollExample() {
         className="bg-body-tertiary md:px-4"
       >
         <Container fluid>
-          <Navbar.Brand href="#" className="md:mr-[10vw]">
+          <Navbar.Brand href="#" className="md:mr-[10vw] text-orange-200">
             चलचित्र
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -138,7 +138,7 @@ function NavScrollExample() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown title="more" id="navbarScrollingDropdown" className="text-orange-200">
                 <NavDropdown.Item as={Link} to="/trending">
                   <span className="flex items-center gap-[1vw] text-orange-100">
                     <BsFire className="text-orange-300" />

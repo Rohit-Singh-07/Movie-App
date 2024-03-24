@@ -23,20 +23,34 @@ const Trending = () => {
         setPage(1);
     };
 
-    const getTrend = async () => {
+    const getCategoryTrend = async () => {
         try {
-          const { data } = await axios.get(`/trending/${category}/day?page=${page}`);
-          setTrend(data.results);
-          setTrend((prevTrend) => [...prevTrend, ...data.results]);
-            setPage((prevPage) => prevPage + 1);
+            const { data } = await axios.get(`/trending/${category}/day?page=1`);
+            setTrend(data.results);
+            setPage(1);
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
-      };
-
+    };
+    
+    const getNextPageTrend = async () => {
+        try {
+            const { data } = await axios.get(`/trending/${category}/day?page=${page}`);
+            setTrend(prevTrend => [...prevTrend, ...data.results]);
+            setPage(prevPage => prevPage + 1);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
     useEffect(() => {
-        getTrend();
+        getCategoryTrend();
     }, [category, duration]);
+    
+    useEffect(() => {
+        getNextPageTrend();
+    }, [page]);
+    
 
     return (
         <>
@@ -63,7 +77,7 @@ const Trending = () => {
                     >
                         <img
                             className="h-full w-full object-cover"
-                            src={`https://image.tmdb.org/t/p/original/${elem.poster_path} || ${elem.profile_path}`}
+                            src={`https://image.tmdb.org/t/p/original/${elem.profile_path || elem.poster_path}`}
                             alt=""
                         />
                         <div className="absolute bottom-0 text-zinc-200 w-full px-2" style={{ background: "linear-gradient(rgba(0, 0, 0, 0.040), rgba(0, 0, 0, 1.941))" }}>
@@ -83,7 +97,7 @@ const Trending = () => {
             </div>
             <InfiniteScroll
                 dataLength={Trend.length}
-                next={getTrend}
+                next={getCategoryTrend}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
                 scrollThreshold={0.9} // Adjust scrollThreshold as needed
