@@ -19,7 +19,6 @@ function CarouselComponent() {
     getWalapaper();
   }, []);
 
-  console.log(walpaper && walpaper[0]);
 
   return (
     <Carousel>
@@ -38,11 +37,11 @@ function CarouselComponent() {
         <Carousel.Caption>
           <div className="absolute left-[-15vw] w-[100vw] pb-[10vh] pt-4 bottom-[-7vh] shadow-md px-[15vw]" style={
             {
-              background: "linear-gradient(rgba(0, 0, 0, 0.025), rgba(0, 0, 0, 1.941))"
+              background: "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1.941))"
             }
           }>
-          <h3 className="font-bold text-xl pb-1px">{walpaper ? walpaper[0].name || walpaper[0].title || walpaper[0].original_title: "Title"}</h3>
-          <p>{walpaper ? walpaper[0].overview: "Overview"}</p>
+          <h3 className="font-bold text-2xl pb-1px">{walpaper ? walpaper[0].name || walpaper[0].title || walpaper[0].original_title: "Title"}</h3>
+          <p className="md:text-[15px] sm:text-[12px] text-[10px]">{walpaper ? walpaper[0].overview: "Overview"}</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -63,8 +62,8 @@ function CarouselComponent() {
               background: "linear-gradient(rgba(0, 0, 0, 0.025), rgba(0, 0, 0, 1.941))"
             }
           }>
-          <h3 className="font-bold text-xl pb-1px" >{walpaper ? walpaper[1].name || walpaper[1].title || walpaper[1].original_title: "Title"}</h3>
-          <p>{walpaper ? walpaper[1].overview: "Overview"}</p>
+          <h3 className="font-bold text-2xl pb-1px" >{walpaper ? walpaper[1].name || walpaper[1].title || walpaper[1].original_title: "Title"}</h3>
+          <p className="md:text-[15px] sm:text-[12px] text-[10px]">{walpaper ? walpaper[1].overview: "Overview"}</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -85,8 +84,8 @@ function CarouselComponent() {
               background: "linear-gradient(rgba(0, 0, 0, 0.025), rgba(0, 0, 0, 1.941))"
             }
           }>
-          <h3 className="font-bold text-xl pb-1px">{walpaper ? walpaper[2].name || walpaper[2].title || walpaper[2].original_title: "Title"}</h3>
-          <p>
+          <h3 className="font-bold text-2xl pb-1px">{walpaper ? walpaper[2].name || walpaper[2].title || walpaper[2].original_title: "Title"}</h3>
+          <p className="md:text-[15px] sm:text-[12px] text-[10px]">
           {walpaper ? walpaper[2].overview: "Overview"}
           </p>
           </div>

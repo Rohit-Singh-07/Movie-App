@@ -9,6 +9,9 @@ import { HiOutlineSparkles } from "react-icons/hi2";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../Utils/axios";
+import { MdLiveTv } from "react-icons/md";
+import { GrAnnounce } from "react-icons/gr";
+import { IoLanguage } from "react-icons/io5";
 
 function NavScrollExample() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -65,9 +68,9 @@ function NavScrollExample() {
                     <h1 className="font-bold">{elem.name || elem.title || elem.original_title}</h1>
                     {elem.media_type === "person" && <p>Department: {elem.known_for_department}</p>}
                     {elem.media_type === "person" && <p>Featured in: {elem.known_for.map((e, i) => <span key={i}>{e.name || e.title || e.original_title}, </span>)}</p>}
-                    {(elem.media_type === "movie" || elem.media_type === "tv") && <p>{elem.media_type}</p>}
-                    {(elem.media_type === "movie" || elem.media_type === "tv") && <p>lang: {elem.original_language}</p>}
-                    {(elem.media_type === "movie" || elem.media_type === "tv") && <span>{elem.media_type === "movie" ? <span>{`release date: ${elem.release_date}`}</span> : <span>{`aired on: ${elem.first_air_date}`}</span>}</span>}
+                    {(elem.media_type === "movie" || elem.media_type === "tv") && <p className="flex items-center gap-2"><MdLiveTv />{elem.media_type}</p>}
+                    {(elem.media_type === "movie" || elem.media_type === "tv") && <p className="flex items-center gap-2"><IoLanguage /> {elem.original_language}</p>}
+                    {(elem.media_type === "movie" || elem.media_type === "tv") && <span>{elem.media_type === "movie" ? <span className="flex items-center gap-2"><GrAnnounce />{elem.release_date}</span> : <span className="flex items-center gap-2"><GrAnnounce />{elem.first_air_date}</span>}</span>}
                     {elem.adult === true && <p>18+</p>}
                   </div>
                 </Link>

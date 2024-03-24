@@ -4,8 +4,10 @@ import Cards from './Cards'
 
 const Home = () => {
   return (
-    <div>
+    <div className='overflow-auto'>
       <CarouselComponent/>
+      <br />
+      <Cards/>
       <br />
       <Cards/>
     </div>
