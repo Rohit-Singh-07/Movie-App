@@ -33,7 +33,7 @@ const Cards = () => {
         <h1 className="font-semibold">Trending</h1>
         <Dropdown
           title="Filter"
-          options={["all", "movie", "tv"]}
+          options={["all", "movie", "tv", "person"]}
           category={handleCategoryChange}
         ></Dropdown>
       </div>
@@ -50,7 +50,7 @@ const Cards = () => {
                 src={
                   Trend
                     ? `https://image.tmdb.org/t/p/original/${
-                        Trend && Trend[idx].poster_path
+                        Trend && Trend[idx].poster_path || Trend[idx].profile_path
                       }`
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
                 }
