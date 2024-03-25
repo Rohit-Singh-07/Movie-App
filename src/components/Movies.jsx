@@ -62,7 +62,7 @@ const Movies = () => {
       </div>
       <div className="flex items-center gap-[3vw] md:gap-[1vw] w-[95vw] overflow-hidden flex-wrap justify-center mx-auto py-[15px]">
         {Trend.map((elem, idx) => (
-          <Link to={`/movie/details/:${elem.id}`}>
+          <Link to={`/movie/details/${elem.id}`}>
             <div
               key={idx}
               className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
