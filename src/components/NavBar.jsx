@@ -12,6 +12,8 @@ import axios from "../Utils/axios";
 import { MdLiveTv } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { IoLanguage } from "react-icons/io5";
+import { SiThemoviedatabase } from "react-icons/si";
+import { BiCameraMovie } from "react-icons/bi";
 
 function NavScrollExample() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +43,7 @@ function NavScrollExample() {
       >
         <Container fluid>
           <Navbar.Brand href="#" className="md:mr-[10vw] text-orange-200">
-            चलचित्र
+          <span className="flex items-center"><SiThemoviedatabase />चलचित्र</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -156,8 +158,8 @@ function NavScrollExample() {
                   People
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Nav.Link as={Link} to="/movies"><span className="flex items-center"><BiCameraMovie className="text-orange-200"/>Movie</span></Nav.Link>
+              <Nav.Link href="/tv"><span className="flex items-center"><MdLiveTv className="text-orange-200"/>TV</span></Nav.Link>
               <Nav.Link href="#" disabled>
                 Link
               </Nav.Link>
