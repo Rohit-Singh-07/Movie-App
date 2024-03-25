@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import { MdLiveTv } from "react-icons/md";
 import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Cards = () => {
   const [Trend, setTrend] = useState([]);
@@ -38,11 +39,12 @@ const Cards = () => {
         ></Dropdown>
       </div>
       <div className="flex items-center gap-[2vw] md:gap-[1vw] w-[95vw] overflow-x-auto flex-nowrap mx-auto py-[15px]">
-        {console.log(Trend)}
+        
         {Trend.map((elem, idx) => {
           return (
+            <Link key={idx} to={`/${elem.media_type}/details/${elem.id}`}>
             <div
-              key={idx}
+              
               className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
             >
               <img
@@ -75,6 +77,7 @@ const Cards = () => {
                 </p>
               </div>
             </div>
+            </Link>
           );
         })}
       </div>

@@ -5,6 +5,7 @@ import { GrAnnounce } from "react-icons/gr";
 import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Link } from "react-router-dom";
 
 const TvShow = () => {
     const [Trend, setTrend] = useState([]);
@@ -60,6 +61,7 @@ const TvShow = () => {
             </div>
             <div className="flex items-center gap-[3vw] md:gap-[1vw] w-[95vw] overflow-hidden flex-wrap justify-center mx-auto py-[15px]">
                 {Trend.map((elem, idx) => (
+                    <Link to={`/tv/details/:${elem.id}`}>
                     <div
                         key={idx}
                         className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
@@ -81,7 +83,7 @@ const TvShow = () => {
                                 <IoLanguage className="text-orange-200" /> {elem.original_language}
                             </p>
                         </div>
-                    </div>
+                    </div></Link>
                 ))}
             </div>
             <InfiniteScroll

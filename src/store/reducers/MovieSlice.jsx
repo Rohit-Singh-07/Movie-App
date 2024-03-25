@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: null,
+  info: null,
 }
 
 export const MovieSlice = createSlice({
-  name: 'Movie',
+  name: 'movie',
   initialState,
   reducers: {
     loadMovie: (state, actions) => {
-      state.value = actions.payload
+      state.info = actions.payload
     },
     removeMovie: (state) => {
-      state.value = null
+      state.info = null
     },
   },
 })
