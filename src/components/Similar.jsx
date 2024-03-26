@@ -30,10 +30,10 @@ const Similar = () => {
 
   return (
     <>
-      <div className="w-[95vw] h-[3vw] mx-auto flex justify-end items-center text-[2.5vw] text-zinc-400 px-[5px]">
+      <div className="w-[95vw] h-[3vw] mx-auto flex justify-end items-center text-[2.5vw] text-zinc-400 px-[5px] pointer-events-none">
         Similar { category }s
       </div>
-      <div className="flex items-center gap-[2vw] md:gap-[1vw] w-[95vw] overflow-x-auto flex-nowrap mx-auto py-[15px]">
+      <div className="flex items-center gap-[2vw] md:gap-[1vw] w-[95vw] overflow-x-auto flex-nowrap mx-auto pb-[10px]">
         
         {Trend.map((elem, idx) => {
           return (

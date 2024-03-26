@@ -63,7 +63,7 @@ function NavScrollExample() {
               {SearchResult?.map((elem, idx) => {
                 return (
                   <Link
-                    to=""
+                    to={`/${elem.media_type}/details/${elem.id}`}
                     key={idx}
                     className="md:w-[40vw] w-[83vw] bg-zinc-100 h-[16vh] mt-[0.5vw] flex justify-start rounded gap-[2vw]"
                   >

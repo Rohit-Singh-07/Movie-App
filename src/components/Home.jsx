@@ -1,17 +1,30 @@
-import React from 'react'
-import CarouselComponent from './Carousel'
-import Cards from './Cards'
+import React, { useState } from 'react';
+import CarouselComponent from './Carousel';
+import Cards from './Cards';
+
 
 const Home = () => {
-  return (
-    <div className='overflow-auto'>
-      <CarouselComponent/>
-      <br />
-      <Cards/>
-      <br />
-      <Cards/>
-    </div>
-  )
-}
+  const [data, setData] = useState(false); // Initialize to a loading state
 
-export default Home
+  const setLoad = (x) => {
+    setData(x);
+  };
+
+  console.log(data)
+
+  return (
+    <>
+      (
+        <div className="overflow-auto">
+          <CarouselComponent loadData={setData} />
+          <br />
+          <Cards />
+          <br />
+          <Cards />
+        </div>
+      )
+    </>
+  );
+};
+
+export default Home;

@@ -1,23 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+// reducers/tvSlice.js
+
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: null,
-}
+  info: null, // Set initial state to null
+};
 
-export const TvSlice = createSlice({
-  name: 'Tv',
+export const tvSlice = createSlice({
+  name: 'tv',
   initialState,
   reducers: {
-    loadTv: (state, actions) => {
-      state.value = actions.payload
+    loadTv: (state, action) => {
+      state.info = action.payload;
     },
     removeTv: (state) => {
-      state.value = null
+      state.info = null; // Reset info to null when removing TV data
     },
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { loadTv, removeTv } = TvSlice.actions
+export const { loadTv, removeTv } = tvSlice.actions;
 
-export default TvSlice.reducer
+export default tvSlice.reducer;

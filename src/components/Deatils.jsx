@@ -8,6 +8,7 @@ import { GrAnnounce } from "react-icons/gr";
 import { IoLanguage } from "react-icons/io5";
 import { PiClockBold } from "react-icons/pi";
 import Similar from "./Similar";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const Details = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ const Details = () => {
   }, [dispatch, id]);
 
   return (
-    <div>
-      <img
+    <div className="overflow-hidden">
+      { info? <div><img
         className="h-[92vh] w-screen object-cover mt-1 opacity-20 relative shadow-[12px_12px_60px_-15px_rgb(107, 105, 105)]"
         src={
           info
@@ -36,7 +37,8 @@ const Details = () => {
         alt=""
       />
               <Outlet/>
-      <div className="absolute text-white top-16 h-[92vh] px-[2vw]">
+      <div className="h-[58vh] absolute text-white top-16 px-[2vw] overflow-auto">
+      <div className="">
         <h1 className="flex items-baseline gap-4">
           <span className="flex items-center font-semibold text-[5.5vw] pb-2">
             <BiCameraMovie className="text-orange-200 font-medium" />
@@ -44,7 +46,7 @@ const Details = () => {
           </span>
           <h3 className="text-[20px] text-zinc-400">{info?.details.tagline}</h3>
         </h1>
-        <div className="pl-[1vw] flex gap-[5vw] relative">
+        <div className="pl-[1vw] flex gap-[5vw]">
           <img
             className="h-[40vh] "
             src={
@@ -142,17 +144,18 @@ const Details = () => {
                 );
               })}
             </h2>
-            <Link to={`/movie/details/${info?.details.id}/trailer`} className="bg-blue-500 h-10 w-32 flex justify-center items-center"><h1>Watch Trailer</h1></Link>
+            <Link to={`/movie/details/${info?.details.id}/trailer`} className="bg-blue-500 h-10 w-32 flex justify-center items-center z-10"><h1>Watch Trailer</h1></Link>
             </div>
             
           </div>
 
-          <div></div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-[2vw]">
-        <Similar category = "movie"  data= {info?.similar}/>
+      
       </div>
+      <div className="absolute bottom-2 left-[2vw] ">
+        <Similar category = "movie"  data= {info?.similar}/>
+      </div></div>: <DetailsLoadAni/>}
     </div>
   );
 };
