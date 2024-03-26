@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import asyncLoadMovie, { removeMovie } from "../store/actions/MovieAction";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { BiCameraMovie } from "react-icons/bi";
 import { GrAnnounce } from "react-icons/gr";
 import { IoLanguage } from "react-icons/io5";
@@ -35,7 +35,7 @@ const Details = () => {
         }
         alt=""
       />
-
+              <Outlet/>
       <div className="absolute text-white top-16 h-[92vh] px-[2vw]">
         <h1 className="flex items-baseline gap-4">
           <span className="flex items-center font-semibold text-[5.5vw] pb-2">
@@ -44,9 +44,9 @@ const Details = () => {
           </span>
           <h3 className="text-[20px] text-zinc-400">{info?.details.tagline}</h3>
         </h1>
-        <div className="pl-[1vw] flex gap-[5vw]">
+        <div className="pl-[1vw] flex gap-[5vw] relative">
           <img
-            className="h-[40vh]"
+            className="h-[40vh] "
             src={
               info
                 ? `https://image.tmdb.org/t/p/original/${
@@ -56,6 +56,13 @@ const Details = () => {
             }
             alt=""
           />
+
+          <div className="bottom-0 absolute">
+            <h2 className="text-white text-lg flex justify-center items-center gap-2 bg-orange-400 w-32 rounded-full p-2">
+              Rating:{" "}
+              <span>{Math.floor(info?.details.vote_average * 10)}%</span>{" "}
+            </h2>
+          </div>
 
           <div className="w-[35vw] flex flex-col gap-2">
             <h2>Overview:</h2>
@@ -82,10 +89,12 @@ const Details = () => {
             </div>
 
             <span className="flex gap-2">
-                <h2><span className="text-orange-200">genre:</span> {info?.details.genres.map((e, i) => {
-                    return <span key={i}>{e.name}, </span>;
-  
-                })}</h2>
+              <h2>
+                <span className="text-orange-200">genre:</span>{" "}
+                {info?.details.genres.map((e, i) => {
+                  return <span key={i}>{e.name}, </span>;
+                })}
+              </h2>
             </span>
             <h2 className="flex flex-col gap-2 py-2 flex-wrap">
               Production Companies:{" "}
@@ -112,6 +121,7 @@ const Details = () => {
                 })}
               </span>
             </h2>
+            <div className="flex justify-between items-center">
             <h2 className="flex gap-2 items-center">
               Available on:{" "}
               {info?.watchProviders?.flatrate.map((e, i) => {
@@ -132,22 +142,17 @@ const Details = () => {
                 );
               })}
             </h2>
-            <h1>Watch Trailer</h1>
+            <Link to={`/movie/details/${info?.details.id}/trailer`} className="bg-blue-500 h-10 w-32 flex justify-center items-center"><h1>Watch Trailer</h1></Link>
+            </div>
+            
           </div>
 
           <div></div>
         </div>
-        <div className="pl-16 top-[-1vw] relative">
-          <h2 className="text-white text-lg flex justify-center items-center gap-2 bg-orange-400 w-32 rounded-full p-2">
-            Rating: <span>{Math.floor(info?.details.vote_average * 10)}%</span>{" "}
-          </h2>
-        </div>
       </div>
-      <div
-      className="absolute bottom-0">
-        <Similar/>
+      <div className="absolute bottom-0 left-[2vw]">
+        <Similar category = "movie"  data= {info?.similar}/>
       </div>
-      
     </div>
   );
 };

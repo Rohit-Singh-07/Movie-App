@@ -39,10 +39,10 @@ function NavScrollExample() {
         expand="md"
         bg="dark"
         data-bs-theme="dark"
-        className="bg-body-tertiary md:px-4"
+        className="bg-body-tertiary md:px-4 z-20"
       >
         <Container fluid>
-          <Navbar.Brand href="#" className="md:mr-[10vw] text-orange-200">
+          <Navbar.Brand as={Link} to="/" className="md:mr-[10vw] text-orange-200">
           <span className="flex items-center"><SiThemoviedatabase />चलचित्र</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

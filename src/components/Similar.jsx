@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Similar = () => {
   const [Trend, setTrend] = useState([]);
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState("movie");
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
@@ -30,13 +30,8 @@ const Similar = () => {
 
   return (
     <>
-      <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px]">
-        <h1 className="font-semibold">Trending</h1>
-        <Dropdown
-          title="Filter"
-          options={["all", "movie", "tv", "person"]}
-          category={handleCategoryChange}
-        ></Dropdown>
+      <div className="w-[95vw] h-[3vw] mx-auto flex justify-end items-center text-[2.5vw] text-zinc-400 px-[5px]">
+        Similar { category }s
       </div>
       <div className="flex items-center gap-[2vw] md:gap-[1vw] w-[95vw] overflow-x-auto flex-nowrap mx-auto py-[15px]">
         
