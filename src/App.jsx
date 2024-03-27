@@ -12,6 +12,7 @@ import Deatils from './components/Deatils';
 import TvDetails from './components/TvDetails';
 import PersonDetails from './components/PersonDetails';
 import Trailer from './components/Trailer';
+import AboutMe from './components/AboutMe';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
       <Route path='/tv/details/:id/trailer' element={<Trailer/>}/>
       </Route>
       <Route path='/person/details/:id' element={<PersonDetails/>}/>
+      <Route path="/aboutme" element={<AboutMe/>} />
     </Routes>
     </div>
   )

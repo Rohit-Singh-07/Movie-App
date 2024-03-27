@@ -46,7 +46,7 @@ const Details = () => {
           </span>
           <h3 className="text-[1.5vw] text-zinc-400">{info?.details.tagline}</h3>
         </h1>
-        <div className="pl-[1vw] flex gap-[5vw]">
+        <div className="pl-[1vw] flex gap-[5vw] relative">
           <img
             className="md:h-[40vh] h-[29vh] rounded-md"
             src={
@@ -67,21 +67,21 @@ const Details = () => {
           </div>
 
           <div className="md:w-[35vw] w-[50vw] flex flex-col md:gap-2 gap-1">
-            <h2 className="font-semibold md:text-regular text-[3.7vw]">Overview:</h2>
-            <h2 className="md:text-regular text-[3vw]">{info?.details.overview}</h2>
+            <h2 className="font-semibold md:text-[1.5vw] text-[3.7vw]">Overview:</h2>
+            <h2 className="md:text-[1.2vw] text-[3vw]">{info?.details.overview}</h2>
             <div className="flex md:gap-2 gap-1 ">
-              <h2 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
+              <h2 className="flex gap-[0.5vw] items-center md:text-[1.2vw] text-[3.7vw]">
                 <IoLanguage className="text-orange-200" />
                 {info?.details.spoken_languages.map((elem, idx) => {
                   return <span key={idx}>{elem.english_name}</span>;
                 })}
               </h2>
-              <h2 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
+              <h2 className="flex gap-[0.5vw] items-center md:text-[1.2vw] text-[3.7vw]">
                 <PiClockBold className="text-orange-200" />{" "}
                 {info?.details.runtime} min
               </h2>
               {info?.details.status === "Released" ? (
-                <h3 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
+                <h3 className="flex gap-[0.5vw] items-center md:text-[1.2vw] text-[3.7vw]">
                   <GrAnnounce className="text-orange-200 " />{" "}
                   {info.details.release_date}
                 </h3>
@@ -91,14 +91,14 @@ const Details = () => {
             </div>
 
             <span className="flex gap-2">
-              <h2 className="md:text-regular text-[3.7vw]">
-                <span className="text-orange-200 md:text-regular text-[3.7vw]">genre:</span>{" "}
+              <h2 className="md:text-[1.2vw] text-[3.7vw]">
+                <span className="text-orange-200 md:text-[1.2vw] text-[3.7vw]">genre:</span>{" "}
                 {info?.details.genres.map((e, i) => {
-                  return <span key={i} className="md:text-regular text-[3.7vw]">{e.name}, </span>;
+                  return <span key={i} className="md:text-[1.2vw] text-[3.7vw]">{e.name}, </span>;
                 })}
               </h2>
             </span>
-            <h2 className="flex flex-col gap-2 py-2 flex-wrap md:text-regular text-[3.7vw]">
+            <h2 className="flex flex-col gap-2 py-2 flex-wrap md:text-[1.2vw] text-[3.7vw]">
               Production Companies:{" "}
               <span className="flex items-center justify-between w-[30vw]">
                 {info?.details.production_companies.map((elem, i) => {
@@ -124,9 +124,9 @@ const Details = () => {
               </span>
             </h2>
             <div className="flex md:justify-between items-center md:flex-row flex-col md:gap-0 gap-3">
-            <h2 className="flex gap-2 items-center md:text-regular text-[3.7vw]">
+            <h2 className="flex gap-2 items-center md:text-[1.2vw] text-[3.7vw]">
               Available on:{" "}
-              {info?.watchProviders?.flatrate.map((e, i) => {
+              {info?.watchProviders?.flatrate?.map((e, i) => {
                 return (
                   <span key={i}>
                     <img

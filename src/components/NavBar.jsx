@@ -40,24 +40,24 @@ function NavScrollExample() {
   return (
     <>
       <Navbar
-        expand="md"
+        expand="lg"
         bg="dark"
         data-bs-theme="dark"
         className="bg-body-tertiary md:px-4 z-20"
       >
         <Container fluid>
-          <Navbar.Brand as={Link} to="/" className="md:mr-[10vw] text-orange-200">
+          <Navbar.Brand as={Link} to="/" className="md:mr-[7vw] text-orange-200">
           <span className="flex items-center"><SiThemoviedatabase />चलचित्र</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Form className="d-flex gap-[2vw]  xl:mr-[8vw] lg:mr-[4vw] md:mr-[6vw]">
+            <Form className="d-flex gap-[2vw]  xl:mr-[8vw] lg:mr-[4.5vw] md:mr-[5vw]">
               <Form.Control
                 onChange={(e) => setSearchTerm(e.target.value)}
                 value={searchTerm}
                 type="search"
                 placeholder="Search"
-                className="me-2 xl:w-[40vw] lg:w-[40vw] md:w-[30vw]"
+                className="me-2 xl:w-[40vw] lg:w-[35vw] md:w-[30vw]"
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
@@ -141,7 +141,7 @@ function NavScrollExample() {
             </div>
 
             <Nav
-              className="me-auto my-2 my-lg-0 xl:gap-[3vw] lg:gap-[1vw] md:gap-[1.5vw] mr-[1vw]"
+              className="me-auto my-2 my-lg-0 xl:gap-[2.4vw] lg:gap-[2.5vw] md:gap-[1.5vw] mr-[1vw]"
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
@@ -164,9 +164,9 @@ function NavScrollExample() {
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={Link} to="/movies"><span className="flex items-center"><BiCameraMovie className="text-orange-200"/>Movie</span></Nav.Link>
-              <Nav.Link href="/tv"><span className="flex items-center"><MdLiveTv className="text-orange-200"/>TV</span></Nav.Link>
-              <Nav.Link href="#" disabled>
-                Link
+              <Nav.Link as={Link} to="/tv"><span className="flex items-center"><MdLiveTv className="text-orange-200"/>TV</span></Nav.Link>
+              <Nav.Link as={Link} to="/aboutme">
+                <span>AboutMe</span>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
