@@ -44,7 +44,7 @@ const Details = () => {
             <BiCameraMovie className="text-orange-200 font-medium" />
             {info?.details.title}
           </span>
-          <h3 className="text-[20px] text-zinc-400">{info?.details.tagline}</h3>
+          <h3 className="text-[1.5vw] text-zinc-400">{info?.details.tagline}</h3>
         </h1>
         <div className="pl-[1vw] flex gap-[5vw]">
           <img
@@ -60,7 +60,7 @@ const Details = () => {
           />
 
           <div className="bottom-0 absolute">
-            <h2 className="text-white text-lg flex justify-center items-center gap-2 bg-orange-400 w-32 rounded-full p-2">
+            <h2 className="text-white md:text-lg flex justify-center items-center gap-2 bg-orange-400 w-32 rounded-full p-2">
               Rating:{" "}
               <span>{Math.floor(info?.details.vote_average * 10)}%</span>{" "}
             </h2>
