@@ -6,6 +6,7 @@ import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link } from "react-router-dom";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const TvShow = () => {
     const [Trend, setTrend] = useState([]);
@@ -49,6 +50,7 @@ const TvShow = () => {
 
     return (
         <>
+           { Trend.length !== 0 ? <div>
             <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
                 <h1 className="font-semibold">TvShow <small className="text-sm">{`(${category})`}</small></h1>
                 <div className="flex gap-3">
@@ -61,7 +63,7 @@ const TvShow = () => {
             </div>
             <div className="flex items-center gap-[3vw] md:gap-[1vw] w-[95vw] overflow-hidden flex-wrap justify-center mx-auto py-[15px]">
                 {Trend.map((elem, idx) => (
-                    <Link to={`/tv/details/:${elem.id}`}>
+                    <Link to={`/tv/details/${elem.id}`}>
                     <div
                         key={idx}
                         className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
@@ -94,6 +96,8 @@ const TvShow = () => {
                 scrollThreshold={0.9} // Adjust scrollThreshold as needed
                 endMessage={<p>No more items to load</p>}
             />
+           </div>: <DetailsLoadAni/>
+           }
         </>
     );
 }

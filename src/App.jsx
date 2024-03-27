@@ -15,7 +15,7 @@ import Trailer from './components/Trailer';
 
 const App = () => {
   return (
-    <div className='bg-zinc-900'>
+    <div className='bg-zinc-900 overflow-hidden'>
       <NavScrollExample/>
       <Routes>
       <Route path="/" element={<Home />} />

@@ -6,6 +6,7 @@ import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const Movies = () => {
   const [Trend, setTrend] = useState([]);
@@ -48,7 +49,8 @@ const Movies = () => {
 
   return (
     <>
-      <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
+      { Trend.length !== 0 ? <div>
+        <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
         <h1 className="font-semibold">
           Movies <small className="text-sm">{`(${category})`}</small>
         </h1>
@@ -111,6 +113,8 @@ const Movies = () => {
         scrollThreshold={0.9} // Adjust scrollThreshold as needed
         endMessage={<p>No more items to load</p>}
       />
+      </div>: <DetailsLoadAni/>
+      }
     </>
   );
 };

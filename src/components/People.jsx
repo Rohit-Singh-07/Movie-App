@@ -6,10 +6,11 @@ import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const People = () => {
   const [People, setPeople] = useState([]);
-  const [category, setCategory] = useState("movie");
+  const [category, setCategory] = useState("popular");
   const [page, setPage] = useState(1);
 
   const handleCategoryChange = (e) => {
@@ -20,7 +21,17 @@ const People = () => {
 
   const getPeople = async () => {
     try {
-      const { data } = await axios.get(`/person/popular`);
+      const { data } = await axios.get(`/person/${category}`);
+      setPeople(data.results);
+      setPage((prevPage) => prevPage + 1);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getNextPagePeople = async () => {
+    try {
+      const { data } = await axios.get(`/person/${category}?page=${page}`);
       setPeople((prevPeople) => [...prevPeople, ...data.results]);
       setPage((prevPage) => prevPage + 1);
     } catch (err) {
@@ -32,21 +43,28 @@ const People = () => {
     getPeople();
   }, [category]);
 
+  useEffect(() => {
+    getNextPagePeople();
+  }, [page]);
+
+
   return (
     <>
-      <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
+      {
+        People.length !== 0 ? <div>
+          <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
         <h1 className="font-semibold">People</h1>
         <div className="flex gap-3">
           <Dropdown
             title="Category"
-            options={["movie", "tv"]}
+            options={["popular", "trending"]}
             category={handleCategoryChange}
           />
         </div>
       </div>
       <div className="flex items-center gap-[3vw] md:gap-[1vw] w-[95vw] overflow-hidden flex-wrap justify-center mx-auto py-[15px]">
         {People.map((elem, idx) => (
-          <Link to={`/person/details/:${elem.id}`}>
+          <Link to={`/person/details/${elem.id}`}>
             <div
               key={idx}
               className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
@@ -93,6 +111,8 @@ const People = () => {
         scrollThreshold={0.9} // Adjust scrollThreshold as needed
         endMessage={<p>No more items to load</p>}
       />
+        </div>: <DetailsLoadAni/>
+      }
     </>
   );
 };

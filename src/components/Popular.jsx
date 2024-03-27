@@ -6,6 +6,7 @@ import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link } from "react-router-dom";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const Popular = () => {
     const [popularity, setPopularity] = useState([]);
@@ -48,6 +49,7 @@ const Popular = () => {
 
     return (
         <>
+           { popularity.length !== 0 ? <div>
             <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
                 <h1 className="font-semibold">Popular</h1>
                 <div className="flex gap-3">
@@ -92,6 +94,8 @@ const Popular = () => {
                 scrollThreshold={0.9}
                 endMessage={<p>No more items to load</p>}
             />
+           </div>: <DetailsLoadAni/>
+           }
         </>
     );
 }

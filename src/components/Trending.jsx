@@ -6,6 +6,7 @@ import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link } from "react-router-dom";
+import DetailsLoadAni from "./DetailsLoadAni";
 
 const Trending = () => {
     const [Trend, setTrend] = useState([]);
@@ -26,7 +27,7 @@ const Trending = () => {
 
     const getCategoryTrend = async () => {
         try {
-            const { data } = await axios.get(`/trending/${category}/day?page=1`);
+            const { data } = await axios.get(`/trending/${category}/${duration}?page=1`);
             setTrend(data.results);
             setPage(1);
         } catch (err) {
@@ -36,7 +37,7 @@ const Trending = () => {
     
     const getNextPageTrend = async () => {
         try {
-            const { data } = await axios.get(`/trending/${category}/day?page=${page}`);
+            const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
             setTrend(prevTrend => [...prevTrend, ...data.results]);
             setPage(prevPage => prevPage + 1);
         } catch (err) {
@@ -55,7 +56,9 @@ const Trending = () => {
 
     return (
         <>
-            <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
+            {
+                Trend.length !== 0 ? <div>
+                    <div className="w-[95vw] h-[3vw] mx-auto flex justify-between items-center text-[25px] text-zinc-400 px-[5px] mt-4">
                 <h1 className="font-semibold">Trending</h1>
                 <div className="flex gap-3">
                     <Dropdown
@@ -105,6 +108,8 @@ const Trending = () => {
                 scrollThreshold={0.9} // Adjust scrollThreshold as needed
                 endMessage={<p>No more items to load</p>}
             />
+                </div>: <DetailsLoadAni/>
+            }
         </>
     );
 }

@@ -15,10 +15,8 @@ const Home = () => {
   return (
     <>
       (
-        <div className="overflow-auto">
+        <div className="overflow-hidden">
           <CarouselComponent loadData={setData} />
-          <br />
-          <Cards />
           <br />
           <Cards />
         </div>
