@@ -37,7 +37,7 @@ const Details = () => {
         alt=""
       />
               <Outlet/>
-      <div className="h-[58vh] absolute text-white top-16 px-[2vw] overflow-auto">
+      <div className="h-[58vh] absolute text-white top-16 px-[2vw] overflow-auto w-full">
       <div className="">
         <h1 className="flex items-baseline gap-4">
           <span className="flex items-center font-semibold text-[5.5vw] pb-2">
@@ -48,7 +48,7 @@ const Details = () => {
         </h1>
         <div className="pl-[1vw] flex gap-[5vw]">
           <img
-            className="h-[40vh] "
+            className="md:h-[40vh] h-[29vh] rounded-md"
             src={
               info
                 ? `https://image.tmdb.org/t/p/original/${
@@ -66,23 +66,23 @@ const Details = () => {
             </h2>
           </div>
 
-          <div className="w-[35vw] flex flex-col gap-2">
-            <h2>Overview:</h2>
-            <h2>{info?.details.overview}</h2>
-            <div className="flex gap-2">
-              <h2 className="flex gap-[0.5vw] items-center">
+          <div className="md:w-[35vw] w-[50vw] flex flex-col md:gap-2 gap-1">
+            <h2 className="font-semibold md:text-regular text-[3.7vw]">Overview:</h2>
+            <h2 className="md:text-regular text-[3vw]">{info?.details.overview}</h2>
+            <div className="flex md:gap-2 gap-1 ">
+              <h2 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
                 <IoLanguage className="text-orange-200" />
                 {info?.details.spoken_languages.map((elem, idx) => {
                   return <span key={idx}>{elem.english_name}</span>;
                 })}
               </h2>
-              <h2 className="flex gap-[0.5vw] items-center">
+              <h2 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
                 <PiClockBold className="text-orange-200" />{" "}
                 {info?.details.runtime} min
               </h2>
               {info?.details.status === "Released" ? (
-                <h3 className="flex gap-[0.5vw] items-center">
-                  <GrAnnounce className="text-orange-200" />{" "}
+                <h3 className="flex gap-[0.5vw] items-center md:text-regular text-[3.7vw]">
+                  <GrAnnounce className="text-orange-200 " />{" "}
                   {info.details.release_date}
                 </h3>
               ) : (
@@ -91,14 +91,14 @@ const Details = () => {
             </div>
 
             <span className="flex gap-2">
-              <h2>
-                <span className="text-orange-200">genre:</span>{" "}
+              <h2 className="md:text-regular text-[3.7vw]">
+                <span className="text-orange-200 md:text-regular text-[3.7vw]">genre:</span>{" "}
                 {info?.details.genres.map((e, i) => {
-                  return <span key={i}>{e.name}, </span>;
+                  return <span key={i} className="md:text-regular text-[3.7vw]">{e.name}, </span>;
                 })}
               </h2>
             </span>
-            <h2 className="flex flex-col gap-2 py-2 flex-wrap">
+            <h2 className="flex flex-col gap-2 py-2 flex-wrap md:text-regular text-[3.7vw]">
               Production Companies:{" "}
               <span className="flex items-center justify-between w-[30vw]">
                 {info?.details.production_companies.map((elem, i) => {
@@ -123,8 +123,8 @@ const Details = () => {
                 })}
               </span>
             </h2>
-            <div className="flex justify-between items-center">
-            <h2 className="flex gap-2 items-center">
+            <div className="flex md:justify-between items-center md:flex-row flex-col md:gap-0 gap-3">
+            <h2 className="flex gap-2 items-center md:text-regular text-[3.7vw]">
               Available on:{" "}
               {info?.watchProviders?.flatrate.map((e, i) => {
                 return (
@@ -144,7 +144,7 @@ const Details = () => {
                 );
               })}
             </h2>
-            <Link to={`/movie/details/${info?.details.id}/trailer`} className="bg-blue-500 h-10 w-32 flex justify-center items-center z-10"><h1>Watch Trailer</h1></Link>
+            <Link to={`/movie/details/${info?.details.id}/trailer`} className="bg-blue-500 h-10 w-32 flex justify-center items-center z-10 rounded-sm"><h1>Watch Trailer</h1></Link>
             </div>
             
           </div>
