@@ -14,7 +14,6 @@ const TvShow = () => {
     const [page, setPage] = useState(1);
 
     const handleCategoryChange = (e) => {
-        console.log(e.target.value)
         setCategory(e.target.value);
         setPage(1);
     };

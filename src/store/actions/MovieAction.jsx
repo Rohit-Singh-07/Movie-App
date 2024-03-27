@@ -20,7 +20,6 @@ const asyncLoadMovie = (id) => async (dispatch, getState) => {
             watchProviders: watchProviders.data.results.IN,
         };
 
-        console.log(allDetails);
 
         // Dispatch an action to update Redux store with the fetched movie details
         dispatch(loadMovie(allDetails));

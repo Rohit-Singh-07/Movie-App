@@ -10,7 +10,7 @@ const Home = () => {
     setData(x);
   };
 
-  console.log(data)
+
 
   return (
     <>

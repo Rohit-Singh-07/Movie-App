@@ -26,7 +26,7 @@ const AboutMe = () => {
             <br />
             <div className="flex gap-[2vw]">
               <a
-                href="www.linkedin.com/in/rohitsingh77"
+                href="https://www.linkedin.com/in/rohitsingh77"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -36,7 +36,7 @@ const AboutMe = () => {
                   alt=""
                 />
               </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Rohit-Singh-07" target="_blank" rel="noopener noreferrer">
                 <img
                   className="h-[2.5vw] w-[6vw] rounded-md object-cover"
                   src="https://allvectorlogo.com/img/2021/12/github-logo-vector.png"
@@ -44,7 +44,7 @@ const AboutMe = () => {
                 />
               </a>
 
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/r.o.h.u._/" target="_blank" rel="noopener noreferrer">
                 <img
                   className="h-[2.5vw] w-[2.5vw] rounded-md object-cover"
                   src="https://us.123rf.com/450wm/aiart30/aiart302303/aiart30230303494/199524793-pixel-camera-icon-on-colorful-gradient-background-pixel-camera-icon-pixel-camera-vector-icon.jpg?ver=6"

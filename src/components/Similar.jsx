@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "../Utils/axios";
-import Dropdown from "./Dropdown";
 import { MdLiveTv } from "react-icons/md";
 import { IoLanguage } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";

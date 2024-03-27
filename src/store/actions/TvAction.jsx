@@ -20,7 +20,6 @@ const asyncLoadTv = (id) => async (dispatch, getState) => {
             watchProviders: watchProviders.data.results.IN,
         };
 
-        console.log(allDetails);
 
         // Dispatch an action to update Redux store with the fetched tv details
         dispatch(loadTv(allDetails));

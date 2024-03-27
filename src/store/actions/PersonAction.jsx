@@ -16,7 +16,6 @@ const asyncLoadPerson = (id) => async (dispatch, getState) => {
             tv_credits: tv_credits.data,
         };
 
-        console.log(allDetails);
 
         // Dispatch an action to update Redux store with the fetched Person details
         dispatch(loadPerson(allDetails));

@@ -166,7 +166,7 @@ function NavScrollExample() {
               <Nav.Link as={Link} to="/movies"><span className="flex items-center"><BiCameraMovie className="text-orange-200"/>Movie</span></Nav.Link>
               <Nav.Link as={Link} to="/tv"><span className="flex items-center"><MdLiveTv className="text-orange-200"/>TV</span></Nav.Link>
               <Nav.Link as={Link} to="/aboutme">
-                <span>AboutMe</span>
+                <span className="text-orange-200">AboutMe</span>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

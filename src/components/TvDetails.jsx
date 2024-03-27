@@ -7,7 +7,8 @@ import { BiCameraMovie } from "react-icons/bi";
 import { GrAnnounce } from "react-icons/gr";
 import { IoLanguage } from "react-icons/io5";
 import { PiClockBold } from "react-icons/pi";
-import Similar from "./Similar";
+import { MdLiveTv } from "react-icons/md";
+import { FaStar } from "react-icons/fa";
 import DetailsLoadAni from "./DetailsLoadAni";
 
 const TvDetails = () => {
@@ -17,7 +18,6 @@ const TvDetails = () => {
 
   useEffect(() => {
     dispatch(asyncLoadTv(id));
-    console.log(info);
 
     return () => {
       dispatch(removeTv());
@@ -50,7 +50,7 @@ const TvDetails = () => {
         </h1>
         <div className="pl-[1vw] flex gap-[5vw] relative">
           <img
-            className="md:h-[40vh] h-[29vh] rounded-md "
+            className="md:h-[40vh] h-[29vh] rounded-md relative"
             src={
               info
                 ? `https://image.tmdb.org/t/p/original/${
@@ -156,7 +156,52 @@ const TvDetails = () => {
       </div>
       </div>
       <div className="absolute bottom-0 left-[2vw]">
-        <Similar category = "tv"  data= {info?.similar}/>
+      <div className="w-[95vw] h-[3vw] mx-auto flex justify-end items-center text-[2.5vw] text-zinc-400 px-[5px] pointer-events-none">
+        Similar Tv Shows
+      </div>
+      <div className="flex items-center gap-[2vw] md:gap-[1vw] w-[95vw] overflow-x-auto flex-nowrap mx-auto pb-[10px]">
+        
+        {info.similar.map((elem, idx) => {
+          return (
+            <Link key={idx} to={`/movie/details/${elem.id}`}>
+            <div
+              
+              className="h-[20vh] md:h-[30vh] lg:w-[15vw] w-[27vw] bg-slate-500 overflow-hidden rounded-md flex-nowrap shrink-0 relative"
+            >
+              <img
+                className="h-full w-full object-cover"
+                src={
+                  info.similar
+                    ? `https://image.tmdb.org/t/p/original/${
+                        elem && elem.poster_path || elem.profile_path
+                      }`
+                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                }
+                alt=""
+              />
+              <div className="absolute bottom-0 text-zinc-200 w-full px-2" style={
+            {
+              background: "linear-gradient(rgba(0, 0, 0, 0.040), rgba(0, 0, 0, 1.941))"
+            }
+          }>
+                <h1 className="font-semibold text-[1.4vw] md:text-[1.1vw]">
+                  {elem.name || elem.title || elem.original_title}
+                </h1>
+                <p className="flex items-center justify-between text-[1vw] md:text-[0.9vw]">
+                  <span className="flex items-center gap-2"><MdLiveTv className="text-orange-200" />
+                  {elem.media_type}</span>
+                  <span className="flex items-center gap-2"><FaStar className="text-orange-200"/>{`${elem.vote_average}/10`}</span>
+                </p>
+                <p className="flex items-center gap-2 text-[1vw] md:text-[0.9vw]">
+                  <IoLanguage className="text-orange-200" />{" "}
+                  {elem.original_language}
+                </p>
+              </div>
+            </div>
+            </Link>
+          );
+        })}
+      </div>
       </div>
      </div> : <DetailsLoadAni/>}
     </div>

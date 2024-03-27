@@ -17,7 +17,6 @@ const PersonDetails = () => {
 
   useEffect(() => {
     dispatch(asyncLoadPerson(id));
-    console.log(info);
 
     return () => {
       dispatch(removePerson());
